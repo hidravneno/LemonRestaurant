@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ReservationForm: View {
+    @State private var userName = ""
+    @State private var guestCount = 1
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Section(header: Text("Reservation Details")) {
+                TextField("Enter your name", text: $userName)
+                Stepper("Guests: \(guestCount)", value: $guestCount, in: 1...10)
+            }
+        }
     }
 }
 
 #Preview {
     ReservationForm()
 }
+
